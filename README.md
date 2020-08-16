@@ -30,7 +30,7 @@ User
 Bootable image:
 
 ```
-72M	output/buildroot.iso
+72M	output/disk.img.gz
 ```
 
 Device layout:
@@ -42,7 +42,7 @@ Device layout:
 
 Reference board:
 
-`qemu/x86_64`
+`pc` (bios)
 
 ```
 4.9M	output/images/bzImage
