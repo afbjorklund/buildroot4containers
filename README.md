@@ -1,9 +1,9 @@
-buildroot4kubernetes
+buildroot4containers
 ====================
 
-Build a minimal environment with Buildroot, enough for running kubeadm for Kubernetes.
+Build a minimal environment with Buildroot, enough for running Docker with containerd.
 
-So basically the "bigger brother" of boot2docker... Or a smaller version of minikube.iso.
+Like an "updated" version of the deprecated boot2docker, running entirelly from memory.
 
 Written by Anders Björklund (@afbjorklund)
 
@@ -22,7 +22,6 @@ User
 * containerd (required by dockerd)
 * bash
 * iptables
-* conntrack (required since 1.18)
 
 
 ![graph size](graph-size.png)
