@@ -1,6 +1,0 @@
-config BR2_PACKAGE_KUBERNETES
-	bool "kubernetes"
-	help
-	  Production-Grade Container Orchestration
-
-	  https://kubernetes.io/
