@@ -50,47 +50,6 @@ graph-size.pdf:
 graph-size.png: graph-size.pdf
 	pdftoppm <$< | pnmtopng >$@
 
-KUBEADM = kubeadm
-DOCKER = docker
-
-GOOS = linux
-GOARCH = amd64
-
-# /etc/kubernetes/flannel.yml
-# https://raw.githubusercontent.com/coreos/flannel/v0.12.0/Documentation/kube-flannel.yml
-
-images.txt:
-	echo $$DOCKER
-	$(KUBEADM) config images list > $@
-	echo "quay.io/coreos/flannel:v0.12.0-$(GOARCH)" >> $@
-
-images: images.txt
-	xargs -n 1 $(DOCKER) pull < $<
-	for image in $$(cat $<); do \
-	file=$$(echo $$image | sed -e 's/:/_/'); \
-	mkdir -p images/$$(dirname $$file); \
-	$(DOCKER) save $$image | pigz > images/$$file; done
-
-images.txz: images.txt
-	xargs -n 1 $(DOCKER) pull < $<
-	xargs $(DOCKER) save < $< | pixz > $@
-
-images.iso: images.txt images.txz
-	genisoimage -output $@ $^
-
-PYTHON = python
-
-FORMAT = '{{.VirtualSize}}'
-
-sizes.txt: images.txt
-	xargs -n 1 $(DOCKER) images --format $(FORMAT) < $< > $@
-
-image-size.png: images.txt sizes.txt
-	$(PYTHON) image-size.py $^ $@
-
-image-size.pdf: images.txt sizes.txt
-	$(PYTHON) image-size.py $^ $@
-
 # reference board
 qemu_x86_64: buildroot
 	$(MAKE) -C buildroot qemu_x86_64_defconfig
