@@ -40,7 +40,7 @@ run: output/buildroot.iso disk.img
 	net="-net nic,model=virtio -net user"; \
 	test -e data.img && hdb="-hdb data.img"; \
 	test -e images.iso && hdd="-hdd images.iso"; \
-	qemu-system-x86_64 $$kvm -M pc -smp 2 -m 2048 $$net \
+	qemu-system-x86_64 $$kvm -M pc -smp 1 -m 1024 $$net \
 	-cdrom output/buildroot.iso -hda disk.img $$hdb $$hdd -boot d
 
 graph-size.pdf:
