@@ -132,3 +132,6 @@ CONFIG_ISO9660_FS=m
 # distributed storage
 CONFIG_NFS_FS=m
 CONFIG_FUSE_FS=m
+
+# real time clock
+CONFIG_RTC_CLASS=y
