@@ -38,9 +38,10 @@ data.img:
 run: output/buildroot.iso disk.img
 	test -e /dev/kvm && kvm=-enable-kvm; \
 	net="-net nic,model=virtio -net user"; \
+	rng="-device virtio-rng-pci,max-bytes=1024,period=1000" \
 	test -e data.img && hdb="-hdb data.img"; \
 	test -e images.iso && hdd="-hdd images.iso"; \
-	qemu-system-x86_64 $$kvm -M pc -smp 1 -m 1024 $$net \
+	qemu-system-x86_64 $$kvm -M pc -smp 1 -m 1024 $$net $$rng \
 	-cdrom output/buildroot.iso -hda disk.img $$hdb $$hdd -boot d
 
 graph-size.pdf:
