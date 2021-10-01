@@ -1,1 +1,1 @@
-include $(sort $(wildcard $(BR2_EXTERNAL_KUBERNETES_PATH)/package/*/*.mk))
+include $(sort $(wildcard $(BR2_EXTERNAL_CONTAINERS_PATH)/package/*/*.mk))
