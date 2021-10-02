@@ -1,0 +1,5 @@
+menu "Containers"
+    source "$BR2_EXTERNAL_CONTAINERS_PATH/package/nerdctl/Config.in"
+    source "$BR2_EXTERNAL_CONTAINERS_PATH/package/buildkit/Config.in"
+    source "$BR2_EXTERNAL_CONTAINERS_PATH/package/cni-plugins/Config.in"
+endmenu
