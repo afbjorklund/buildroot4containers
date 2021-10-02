@@ -1,0 +1,6 @@
+config BR2_PACKAGE_PYTHON_JSONPOINTER
+	bool "python-jsonpointer"
+	help
+          Library to resolve JSON Pointers according to RFC 6901.
+
+	  https://github.com/stefankoegl/python-json-pointer

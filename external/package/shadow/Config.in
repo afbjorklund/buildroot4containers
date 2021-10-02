@@ -1,0 +1,13 @@
+config BR2_PACKAGE_SHADOW
+	bool "shadow"
+	help
+	  Shadow password file utilities for Linux
+
+	  https://github.com/shadow-maint/shadow
+
+if BR2_PACKAGE_SHADOW
+
+config BR2_PACKAGE_SHADOW_PROGS
+	bool "install all programs"
+
+endif

@@ -1,0 +1,17 @@
+config BR2_PACKAGE_CLOUD_INIT
+	bool "cloud-init"
+	depends on BR2_PACKAGE_PYTHON3
+	select BR2_PACKAGE_PYTHON_JINJA2 # runtime
+	select BR2_PACKAGE_PYTHON_OAUTHLIB # runtime
+	select BR2_PACKAGE_PYTHON3_CONFIGOBJ # runtime
+	select BR2_PACKAGE_PYTHON_PYYAML # runtime
+	select BR2_PACKAGE_PYTHON_REQUESTS # runtime
+	select BR2_PACKAGE_PYTHON_URLLIB3 # runtime
+	select BR2_PACKAGE_PYTHON_JSONSCHEMA # runtime
+	select BR2_PACKAGE_PYTHON_JSONPATCH # runtime
+	select BR2_PACKAGE_PYTHON_JSONPOINTER # runtime
+	select BR2_PACKAGE_PYTHON_NETIFACES # runtime
+	help
+	  The standard for customising cloud instances
+
+	  https://cloud-init.io/

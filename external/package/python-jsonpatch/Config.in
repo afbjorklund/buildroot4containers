@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_JSONPATCH
+	bool "python-jsonpatch"
+        select BR2_PACKAGE_PYTHON_JSONPOINTER # runtime
+	help
+          Library to apply JSON Patches according to RFC 6902.
+
+	  https://github.com/stefankoegl/python-json-patch
