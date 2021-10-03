@@ -1,9 +1,9 @@
 buildroot4containers
 ====================
 
-Build a minimal environment with Buildroot, enough for running Docker with containerd.
+Build a minimal environment with Buildroot, enough for running Lima with containerd.
 
-Like an "updated" version of the deprecated boot2docker, running entirelly from memory.
+Run from a resized disk image, but also include cloud-init for customization at boot.
 
 Written by Anders Björklund (@afbjorklund)
 
