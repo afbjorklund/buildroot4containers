@@ -30,7 +30,7 @@ User
 Bootable image:
 
 ```
-72M	output/disk.img.gz
+94M	output/disk.img.gz
 ```
 
 Device layout:
