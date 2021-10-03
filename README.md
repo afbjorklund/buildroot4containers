@@ -38,7 +38,7 @@ Device layout:
 | QEMU | File          | Media | Device   | Used for          | Size |
 | ---- | ------------- | ----- | -------- | ----------------- | ---- |
 | -hda | disk.img      | disk  | /dev/sda | Persistent `/var` |  20g |
-| -hdc | buildroot.iso | cdrom |          | Buildroot booting |  72m |
+| -hdb | data.img      | disk  | /dev/sdb | Persistent `/data`|   5g |
 
 Reference board:
 
