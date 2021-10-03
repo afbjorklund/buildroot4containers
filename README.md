@@ -18,8 +18,9 @@ Kernel
 * vxlan
 
 User
-* docker
-* containerd (required by dockerd)
+* nerdctl
+* containerd
+* buildkitd
 * bash
 * iptables
 
