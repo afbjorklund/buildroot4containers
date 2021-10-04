@@ -39,17 +39,13 @@ disk.img:
 	qemu-img convert -f raw -O qcow2 output/disk.img $@
 	qemu-img resize $@ 20G
 
-data.img:
-	qemu-img create -f qcow2 $@ 5g
-
 run: disk.img
 	test -e /dev/kvm && kvm=-enable-kvm; \
 	net="-net nic,model=virtio -net user"; \
 	rng="-device virtio-rng-pci,max-bytes=1024,period=1000" \
-	test -e data.img && hdb="-hdb data.img"; \
-	test -e images.iso && hdd="-hdd images.iso"; \
+	test -e cidata.iso && hdc="-drive file=cidata.iso,if=virtio,media=cdrom"; \
 	qemu-system-x86_64 $$kvm -M pc -smp 1 -m 1024 $$net $$rng \
-	-drive file=disk.img,if=virtio $$hdb $$hdd -boot c
+	-drive file=disk.img,if=virtio $$hdb $$hdc -boot c
 
 graph-size.pdf:
 	$(MAKE) -C buildroot graph-size
