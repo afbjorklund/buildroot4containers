@@ -43,7 +43,7 @@ run: disk.img
 	test -e /dev/kvm && kvm=-enable-kvm; \
 	net="-net nic,model=virtio -net user"; \
 	rng="-device virtio-rng-pci,max-bytes=1024,period=1000" \
-	test -e cidata.iso && hdc="-drive file=cidata.iso,if=virtio,media=cdrom"; \
+	test -e cidata.iso && hdc="-cdrom cidata.iso"; \
 	qemu-system-x86_64 $$kvm -M pc -smp 1 -m 1024 $$net $$rng \
 	-drive file=disk.img,if=virtio $$hdb $$hdc -boot c
 
