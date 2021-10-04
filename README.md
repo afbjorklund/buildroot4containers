@@ -38,7 +38,7 @@ Device layout:
 | QEMU | File          | Media | Device   | Used for          | Size |
 | ---- | ------------- | ----- | -------- | ----------------- | ---- |
 | -hda | disk.img      | disk  | /dev/sda | Persistent `/var` |  20g |
-| -hdb | data.img      | disk  | /dev/sdb | Persistent `/data`|   5g |
+| -hdc | cidata.iso    | cdrom | /dev/sdc | `cloud-init` data |   5m |
 
 Reference board:
 
