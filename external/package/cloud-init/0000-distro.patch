@@ -1,0 +1,95 @@
+diff --git a/cloudinit/distros/buildroot.py b/cloudinit/distros/buildroot.py
+new file mode 100644
+index 00000000..ce00bf0f
+--- /dev/null
++++ b/cloudinit/distros/buildroot.py
+@@ -0,0 +1,10 @@
++# This file is part of cloud-init. See LICENSE file for license information.
++
++from cloudinit.distros import gentoo
++
++
++class Distro(gentoo.Distro):
++    pass
++
++# vi: ts=4 expandtab
++
+diff --git a/cloudinit/net/sysconfig.py b/cloudinit/net/sysconfig.py
+index 06f7255e..bd69bdae 100644
+--- a/cloudinit/net/sysconfig.py
++++ b/cloudinit/net/sysconfig.py
+@@ -18,8 +18,8 @@ from .network_state import (
+     is_ipv6_addr, net_prefix_to_ipv4_mask, subnet_is_ipv6, IPV6_DYNAMIC_TYPES)
+ 
+ LOG = logging.getLogger(__name__)
+-KNOWN_DISTROS = ['almalinux', 'centos', 'eurolinux', 'fedora', 'rhel', 'rocky',
+-                 'suse', 'virtuozzo']
++KNOWN_DISTROS = ['almalinux', 'buildroot', 'centos', 'eurolinux', 'fedora',
++                 'rhel', 'rocky', 'suse', 'virtuozzo']
+ NM_CFG_FILE = "/etc/NetworkManager/NetworkManager.conf"
+ 
+ 
+diff --git a/config/cloud.cfg.tmpl b/config/cloud.cfg.tmpl
+index 825deff4..e025000e 100644
+--- a/config/cloud.cfg.tmpl
++++ b/config/cloud.cfg.tmpl
+@@ -32,8 +32,8 @@ disable_root: false
+ disable_root: true
+ {% endif %}
+ 
+-{% if variant in ["almalinux", "alpine", "amazon", "centos", "eurolinux",
+-                  "fedora", "rhel", "rocky", "virtuozzo"] %}
++{% if variant in ["almalinux", "alpine", "buildroot", "amazon", "centos",
++                  "eurolinux", "fedora", "rhel", "rocky", "virtuozzo"] %}
+ mount_default_fields: [~, ~, 'auto', 'defaults,nofail', '0', '2']
+ {% if variant == "amazon" %}
+ resize_rootfs: noblock
+@@ -85,7 +85,7 @@ cloud_init_modules:
+  - set_hostname
+  - update_hostname
+  - update_etc_hosts
+-{% if variant in ["alpine", "photon"] %}
++{% if variant in ["alpine", "buildroot", "photon"] %}
+  - resolv_conf
+ {% endif %}
+ {% if not variant.endswith("bsd") %}
+@@ -173,9 +173,10 @@ cloud_final_modules:
+ # (not accessible to handlers/transforms)
+ system_info:
+    # This will affect which distro class gets used
+-{% if variant in ["almalinux", "alpine", "amazon", "arch", "centos", "debian",
+-                  "eurolinux", "fedora", "freebsd", "netbsd", "openbsd",
+-                  "photon", "rhel", "rocky", "suse", "ubuntu", "virtuozzo"] %}
++{% if variant in ["almalinux", "alpine", "amazon", "arch", "buildroot",
++                  "centos", "debian", "eurolinux", "fedora", "freebsd",
++                  "netbsd", "openbsd", "photon", "rhel", "rocky", "suse",
++                  "ubuntu", "virtuozzo"] %}
+    distro: {{ variant }}
+ {% elif variant in ["dragonfly"] %}
+    distro: dragonflybsd
+@@ -245,6 +246,8 @@ system_info:
+      groups: [cdrom, users]
+ {% elif variant == "alpine" %}
+      groups: [adm, sudo]
++{% elif variant == "buildroot" %}
++     groups: [adm, sudo]
+ {% elif variant == "arch" %}
+      groups: [wheel, users]
+ {% else %}
+diff --git a/tools/render-cloudcfg b/tools/render-cloudcfg
+index 30f82521..59c7d7fb 100755
+--- a/tools/render-cloudcfg
++++ b/tools/render-cloudcfg
+@@ -4,9 +4,9 @@ import argparse
+ import os
+ import sys
+ 
+-VARIANTS = ["almalinux", "alpine", "amazon", "arch", "centos", "debian",
+-            "eurolinux", "fedora", "freebsd", "netbsd", "openbsd", "photon",
+-            "rhel", "suse","rocky", "ubuntu", "unknown", "virtuozzo"]
++VARIANTS = ["almalinux", "alpine", "amazon", "arch", "buildroot", "centos",
++            "debian", "eurolinux", "fedora", "freebsd", "netbsd", "openbsd",
++            "photon", "rhel", "suse","rocky", "ubuntu", "unknown", "virtuozzo"]
+ 
+ 
+ if "avoid-pep8-E402-import-not-top-of-file":

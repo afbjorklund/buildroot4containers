@@ -17,10 +17,9 @@ CLOUD_INIT_DEPENDENCIES = \
 CLOUD_INIT_LICENSE = Apache-2.0
 CLOUD_INIT_LICENSE_FILES = LICENSE-Apache2.0
 CLOUD_INIT_SETUP_TYPE = distutils
-CLOUD_INIT_BUILD_OPTS = \
-	--distro gentoo
 CLOUD_INIT_INSTALL_TARGET_OPTS = \
 	--executable /usr/bin/python3 \
-	--init-system sysvinit_openrc
+	--init-system sysvinit_openrc \
+	--distro buildroot
 
 $(eval $(python-package))
