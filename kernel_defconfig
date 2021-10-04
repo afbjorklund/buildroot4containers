@@ -135,6 +135,7 @@ CONFIG_IKCONFIG_PROC=y
 
 # cdrom support
 CONFIG_ISO9660_FS=m
+CONFIG_BLK_DEV_SR=m
 
 # distributed storage
 CONFIG_NFS_FS=m
