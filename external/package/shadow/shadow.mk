@@ -24,7 +24,11 @@ define SHADOW_BUILD_CMDS
 	$(TARGET_MAKE_ENV) $(MAKE) -C $(SHADOW_SRCDIR)/src newgidmap
 
 	$(TARGET_MAKE_ENV) $(MAKE) -C $(SHADOW_SRCDIR)/src useradd
+	$(TARGET_MAKE_ENV) $(MAKE) -C $(SHADOW_SRCDIR)/src userdel
+	$(TARGET_MAKE_ENV) $(MAKE) -C $(SHADOW_SRCDIR)/src usermod
 	$(TARGET_MAKE_ENV) $(MAKE) -C $(SHADOW_SRCDIR)/src groupadd
+	$(TARGET_MAKE_ENV) $(MAKE) -C $(SHADOW_SRCDIR)/src passwd
+	$(TARGET_MAKE_ENV) $(MAKE) -C $(SHADOW_SRCDIR)/src chpasswd
 endef
 
 define SHADOW_INSTALL_CMDS
@@ -32,7 +36,11 @@ define SHADOW_INSTALL_CMDS
 	install -m 4755 $(@D)/src/newgidmap /usr/bin/
 
 	install -m 0755 $(@D)/src/useradd /usr/sbin/
+	install -m 0755 $(@D)/src/userdel /usr/sbin/
+	install -m 0755 $(@D)/src/usermod /usr/sbin/
 	install -m 0755 $(@D)/src/groupadd /usr/sbin/
+	install -m 0755 $(@D)/src/passwd /usr/bin/
+	install -m 0755 $(@D)/src/chpasswd /usr/sbin/
 endef
 
 define SHADOW_INSTALL_STAGING_CMDS
@@ -40,7 +48,11 @@ define SHADOW_INSTALL_STAGING_CMDS
 	install -m 4755 $(@D)/src/newgidmap $(STAGING_DIR)/usr/bin/
 
 	install -m 0755 $(@D)/src/useradd $(STAGING_DIR)/usr/sbin/
+	install -m 0755 $(@D)/src/userdel $(STAGING_DIR)/usr/sbin/
+	install -m 0755 $(@D)/src/usermod $(STAGING_DIR)/usr/sbin/
 	install -m 0755 $(@D)/src/groupadd $(STAGING_DIR)/usr/sbin/
+	install -m 0755 $(@D)/src/passwd $(STAGING_DIR)/usr/bin/
+	install -m 0755 $(@D)/src/chpasswd $(STAGING_DIR)/usr/sbin/
 endef
 
 define SHADOW_INSTALL_TARGET_CMDS
@@ -48,7 +60,11 @@ define SHADOW_INSTALL_TARGET_CMDS
 	install -m 4755 $(@D)/src/newgidmap $(TARGET_DIR)/usr/bin/
 
 	install -m 0755 $(@D)/src/useradd $(TARGET_DIR)/usr/sbin/
+	install -m 0755 $(@D)/src/userdel $(TARGET_DIR)/usr/sbin/
+	install -m 0755 $(@D)/src/usermod $(TARGET_DIR)/usr/sbin/
 	install -m 0755 $(@D)/src/groupadd $(TARGET_DIR)/usr/sbin/
+	install -m 0755 $(@D)/src/passwd $(TARGET_DIR)/usr/bin/
+	install -m 0755 $(@D)/src/chpasswd $(TARGET_DIR)/usr/sbin/
 endef
 
 endif
