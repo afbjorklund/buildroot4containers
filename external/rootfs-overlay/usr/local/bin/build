@@ -1,0 +1,12 @@
+#!/bin/sh
+while getopts t: name
+do
+	case $name in
+		t) output="--output type=image,name=$OPTARG";;
+		*) exit 1;;
+	esac
+done
+shift $((OPTIND - 1))
+buildctl build --frontend=dockerfile.v0 \
+     --local context=$1 --local dockerfile=$1 \
+     $output
