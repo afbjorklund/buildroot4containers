@@ -7,4 +7,5 @@ menu "Containers"
     source "$BR2_EXTERNAL_CONTAINERS_PATH/package/python3-configobj/Config.in"
     source "$BR2_EXTERNAL_CONTAINERS_PATH/package/python-jsonpatch/Config.in"
     source "$BR2_EXTERNAL_CONTAINERS_PATH/package/python-jsonpointer/Config.in"
+    source "$BR2_EXTERNAL_CONTAINERS_PATH/package/cloud-utils/Config.in"
 endmenu

@@ -11,6 +11,7 @@ config BR2_PACKAGE_CLOUD_INIT
 	select BR2_PACKAGE_PYTHON_JSONPATCH # runtime
 	select BR2_PACKAGE_PYTHON_JSONPOINTER # runtime
 	select BR2_PACKAGE_PYTHON_NETIFACES # runtime
+	select BR2_PACKAGE_CLOUD_UTILS # runtime
 	help
 	  The standard for customising cloud instances
 
