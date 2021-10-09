@@ -22,7 +22,7 @@ NERDCTL_BUILD_TARGETS = \
 	cmd/nerdctl
 
 NERDCTL_INSTALL_BINS = $(notdir $(NERDCTL_BUILD_TARGETS))
-NERDCTL_INSTALL_EXTRAS = containerd-rootless.sh containerd-rootless-setuptool.sh
+NERDCTL_INSTALL_EXTRAS = containerd-rootless.sh
 
 define NERDCTL_INSTALL_CONTAINERD_ROOTLESS
         $(foreach script,$(NERDCTL_INSTALL_EXTRAS),\
