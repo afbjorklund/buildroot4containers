@@ -1,6 +1,6 @@
 #!/bin/sh
 
-NAME=containerd-user
+NAME=containerd-rootless
 DAEMON=/usr/local/bin/containerd-rootless.sh
 PIDFILE=/var/run/$NAME.pid
 DAEMON_USER=$(id -u)

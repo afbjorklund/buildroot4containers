@@ -1,6 +1,6 @@
 #!/bin/sh
 
-NAME=buildkitd-user
+NAME=buildkitd-rootless
 DAEMON=/usr/bin/buildkitd
 PIDFILE=/var/run/$NAME.pid
 DAEMON_USER=$(id -u)
