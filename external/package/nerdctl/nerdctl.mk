@@ -22,6 +22,15 @@ NERDCTL_BUILD_TARGETS = \
 	cmd/nerdctl
 
 NERDCTL_INSTALL_BINS = $(notdir $(NERDCTL_BUILD_TARGETS))
+NERDCTL_INSTALL_EXTRAS = containerd-rootless.sh containerd-rootless-setuptool.sh
+
+define NERDCTL_INSTALL_CONTAINERD_ROOTLESS
+        $(foreach script,$(NERDCTL_INSTALL_EXTRAS),\
+                $(INSTALL) -D -m 0755 $(@D)/extras/rootless/$(script) $(TARGET_DIR)/usr/local/bin/$(script)
+        )
+endef
+
+NERDCTL_POST_INSTALL_TARGET_HOOKS += NERDCTL_INSTALL_CONTAINERD_ROOTLESS
 
 ifeq ($(BR2_PACKAGE_LIBAPPARMOR),y)
 NERDCTL_DEPENDENCIES += libapparmor
