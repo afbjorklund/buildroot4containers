@@ -5,9 +5,9 @@
 ################################################################################
 
 # Please keep in sync with package/python-urllib3/python-urllib3.mk
-PYTHON3_URLLIB3_VERSION = 1.26.6
+PYTHON3_URLLIB3_VERSION = 1.26.7
 PYTHON3_URLLIB3_SOURCE = urllib3-$(PYTHON3_URLLIB3_VERSION).tar.gz
-PYTHON3_URLLIB3_SITE = https://files.pythonhosted.org/packages/4f/5a/597ef5911cb8919efe4d86206aa8b2658616d676a7088f0825ca08bd7cb8
+PYTHON3_URLLIB3_SITE = https://files.pythonhosted.org/packages/80/be/3ee43b6c5757cabea19e75b8f46eaf05a2f5144107d7db48c7cf3a864f73
 PYTHON3_URLLIB3_LICENSE = MIT
 PYTHON3_URLLIB3_LICENSE_FILES = LICENSE.txt
 PYTHON3_URLLIB3_CPE_ID_VENDOR = python
