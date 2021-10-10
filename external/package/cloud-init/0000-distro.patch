@@ -1,3 +1,29 @@
+diff --git a/cloudinit/config/cc_ca_certs.py b/cloudinit/config/cc_ca_certs.py
+index bd7bead9..a6c223c4 100644
+--- a/cloudinit/config/cc_ca_certs.py
++++ b/cloudinit/config/cc_ca_certs.py
+@@ -62,7 +62,7 @@ DISTRO_OVERRIDES = {
+ }
+ 
+ 
+-distros = ['alpine', 'debian', 'ubuntu', 'rhel']
++distros = ['alpine', 'buildroot', 'debian', 'ubuntu', 'rhel']
+ 
+ 
+ def _distro_ca_certs_configs(distro_name):
+diff --git a/cloudinit/config/cc_resolv_conf.py b/cloudinit/config/cc_resolv_conf.py
+index 648935e4..5d98e2e7 100644
+--- a/cloudinit/config/cc_resolv_conf.py
++++ b/cloudinit/config/cc_resolv_conf.py
+@@ -55,7 +55,7 @@ LOG = logging.getLogger(__name__)
+ 
+ frequency = PER_INSTANCE
+ 
+-distros = ['alpine', 'fedora', 'opensuse', 'photon', 'rhel', 'sles']
++distros = ['alpine', 'buildroot', 'fedora', 'opensuse', 'photon', 'rhel', 'sles']
+ 
+ RESOLVE_CONFIG_TEMPLATE_MAP = {
+     '/etc/resolv.conf': 'resolv.conf',
 diff --git a/cloudinit/distros/buildroot.py b/cloudinit/distros/buildroot.py
 new file mode 100644
 index 00000000..ce00bf0f
