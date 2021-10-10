@@ -3,7 +3,7 @@
 NAME=buildkitd-rootless
 DAEMON=/usr/local/bin/buildkitd-rootless.sh
 PIDFILE=/var/run/$NAME.pid
-DAEMON_USER=$(id -u)
+DAEMON_USER=1000
 DAEMON_ARGS=""
 
 [ -r /etc/default/$NAME ] && . /etc/default/$NAME $1
