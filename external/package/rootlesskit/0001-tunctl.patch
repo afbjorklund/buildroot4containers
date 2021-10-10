@@ -1,0 +1,25 @@
+diff --git a/pkg/network/parentutils/parentutils.go b/pkg/network/parentutils/parentutils.go
+index a24a93b..fa7ae9e 100644
+--- a/pkg/network/parentutils/parentutils.go
++++ b/pkg/network/parentutils/parentutils.go
+@@ -3,14 +3,19 @@ package parentutils
+ import (
+ 	"github.com/pkg/errors"
+ 	"os"
++	"os/user"
+ 	"strconv"
+ 
+ 	"github.com/rootless-containers/rootlesskit/pkg/common"
+ )
+ 
+ func PrepareTap(pid int, tap string) error {
++	user, err := user.Current()
++	if err != nil {
++		return err
++	}
+ 	cmds := [][]string{
+-		nsenter(pid, []string{"ip", "tuntap", "add", "name", tap, "mode", "tap"}),
++		nsenter(pid, []string{"tunctl", "-t", tap, "-u", user.Username}),
+ 		nsenter(pid, []string{"ip", "link", "set", tap, "up"}),
+ 	}
+ 	if err := common.Execs(os.Stderr, os.Environ(), cmds); err != nil {
