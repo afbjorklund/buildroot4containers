@@ -1,0 +1,7 @@
+config BR2_PACKAGE_CNI_ISOLATION
+	bool "cni-isolation"
+	depends on BR2_PACKAGE_HOST_GO_TARGET_ARCH_SUPPORTS
+	help
+          CNI Bridge Isolation Plugin
+
+          https://github.com/AkihiroSuda/cni-isolation
