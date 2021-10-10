@@ -144,6 +144,7 @@ CONFIG_SATA_AHCI_PLATFORM=m
 
 # lima support
 CONFIG_AUDIT=y
+CONFIG_TUN=y
 
 # distributed storage
 CONFIG_NFS_FS=m
