@@ -1,0 +1,14 @@
+diff --git a/cloudinit/distros/__init__.py b/cloudinit/distros/__init__.py
+index a634623a..20731fb7 100755
+--- a/cloudinit/distros/__init__.py
++++ b/cloudinit/distros/__init__.py
+@@ -634,7 +634,8 @@ class Distro(persistence.CloudInitPickleMixin, metaclass=abc.ABCMeta):
+         Lock the password of a user, i.e., disable password logins
+         """
+         # passwd must use short '-l' due to SLES11 lacking long form '--lock'
+-        lock_tools = (['passwd', '-l', name], ['usermod', '--lock', name])
++        lock_tools = (['usermod', '-p', '*', name],  # use '*' and not '!'
++                      ['passwd', '-l', name], ['usermod', '--lock', name])
+         try:
+             cmd = next(tool for tool in lock_tools if subp.which(tool[0]))
+         except StopIteration as e:
