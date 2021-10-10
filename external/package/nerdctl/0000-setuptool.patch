@@ -1,0 +1,26 @@
+diff --git a/pkg/buildkitutil/buildkitutil.go b/pkg/buildkitutil/buildkitutil.go
+index f1d2184..e3c08a1 100644
+--- a/pkg/buildkitutil/buildkitutil.go
++++ b/pkg/buildkitutil/buildkitutil.go
+@@ -36,7 +36,7 @@ func BuildctlBaseArgs(buildkitHost string) []string {
+ func PingBKDaemon(buildkitHost string) error {
+ 	hint := "`buildctl` needs to be installed and `buildkitd` needs to be running, see https://github.com/moby/buildkit"
+ 	if rootlessutil.IsRootless() {
+-		hint += " , and `containerd-rootless-setuptool.sh install-buildkit`"
++		hint += " , and use `buildkitd-rootless.sh &` to start rootless buildkitd`"
+ 	}
+ 	buildctlBinary, err := BuildctlBinary()
+ 	if err != nil {
+diff --git a/pkg/rootlessutil/parent.go b/pkg/rootlessutil/parent.go
+index 59f3e31..ec1157e 100644
+--- a/pkg/rootlessutil/parent.go
++++ b/pkg/rootlessutil/parent.go
+@@ -69,7 +69,7 @@ func ParentMain() error {
+ 	}
+ 	stateDir, err := RootlessKitStateDir()
+ 	if err != nil {
+-		return errors.Wrap(err, "rootless containerd not running? (hint: use `containerd-rootless-setuptool.sh install` to start rootless containerd)")
++		return errors.Wrap(err, "rootless containerd not running? (hint: use `containerd-rootless.sh &` to start rootless containerd)")
+ 	}
+ 	childPid, err := RootlessKitChildPid(stateDir)
+ 	if err != nil {
